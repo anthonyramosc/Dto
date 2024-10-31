@@ -5,20 +5,45 @@ export class Customer {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({
+        name: 'first_name',
+        type: 'varchar',
+        nullable: false
+    })
     firstName: string;
 
-    @Column()
+    @Column({
+        name: 'last_name',
+        type: 'varchar',
+        nullable: false
+    })
     lastName: string;
 
-    @Column({ unique: true })
+    @Column({
+        type: 'varchar',
+        unique: true,
+        nullable: false
+    })
     email: string;
 
+    @Column({
+        type: 'varchar',
+        nullable: true
+    })
+    phone: string;
 
-
-    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+    @Column({
+        name: 'created_at',
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP'
+    })
     createdAt: Date;
 
-    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+    @Column({
+        name: 'updated_at',
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP',
+        onUpdate: 'CURRENT_TIMESTAMP'
+    })
     updatedAt: Date;
 }

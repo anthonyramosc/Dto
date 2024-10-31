@@ -1,24 +1,22 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-@Entity('Customer')
+import { IsString, IsEmail, IsNotEmpty, IsPhoneNumber, IsOptional, IsBoolean } from 'class-validator';
 export class CreateCustomerDto {
-    @PrimaryGeneratedColumn()
-    id: number;
-
-    @Column({ name: 'first_name' })
+    @IsNotEmpty()
+    @IsString()
     firstName: string;
 
-    @Column({ name: 'last_name' })
+    @IsNotEmpty()
+    @IsString()
     lastName: string;
 
-    @Column({ unique: true })
+    @IsNotEmpty()
+    @IsEmail()
     email: string;
 
-    @Column({ nullable: true })
+    @IsNotEmpty()
+    @IsPhoneNumber()
     phone: string;
 
-    @CreateDateColumn({ name: 'created_at' })
-    createdAt: Date;
-
-    @UpdateDateColumn({ name: 'updated_at' })
-    updatedAt: Date;
+    @IsOptional()
+    @IsBoolean()
+    isActive?: boolean;
 }

@@ -9,7 +9,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
     password: 'X18VnFxGy5l71M-MqaT6K5hyY_fpBjjV',
     database: 'qxpawzix',
     entities: [Customer],
-    synchronize: true,
+    synchronize: false,
     ssl: true,
     extra: {
         ssl: {
